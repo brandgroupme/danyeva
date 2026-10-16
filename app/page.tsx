@@ -5,6 +5,7 @@ import { useState } from "react";
 const telegramHandle = "aidanyeva";
 const phoneHref = "tel:+79193791119";
 const phoneLabel = "+7 919 379-11-19";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function telegram(message: string) {
   return `https://t.me/${telegramHandle}?text=${encodeURIComponent(message)}`;
@@ -160,7 +161,7 @@ export default function Home() {
         </div>
 
         <div className="hero-portrait">
-          <div className="portrait-frame"><img src="/images/evgeniya-main.png" alt="Евгения Даныева за работой с ноутбуком" /></div>
+          <div className="portrait-frame"><img src={`${basePath}/images/evgeniya-main.png`} alt="Евгения Даныева за работой с ноутбуком" /></div>
           <div className="portrait-note"><span>Практическая сессия</span><strong>10 000 ₽</strong><small>за 60 минут можно многое успеть</small></div>
           <div className="portrait-orbit" aria-hidden="true"><i /><i /><i /></div>
         </div>
@@ -213,7 +214,7 @@ export default function Home() {
         <div className="product-grid">
           {productOffers.map((offer, index) => (
             <article className={index === 2 ? "product-card zebra-card" : "product-card"} id={index === 2 ? "zebra" : undefined} key={offer.title}>
-              {index === 2 && <img className="zebra-watermark" src="/images/zebra-clean.webp" alt="" aria-hidden="true" />}
+              {index === 2 && <img className="zebra-watermark" src={`${basePath}/images/zebra-clean.webp`} alt="" aria-hidden="true" />}
               <span className="product-tag">{offer.tag}</span>
               <h3>{offer.title}</h3>
               <div className="offer-price"><strong>{offer.price}</strong><span>{offer.meta}</span></div>
@@ -311,8 +312,8 @@ export default function Home() {
           <a className="button button-lime" href={telegram("Евгения, посмотрел(а) отзыв. Хочу обсудить мою задачу: ")} target="_blank" rel="noreferrer">Обсудить мою задачу <span>↗</span></a>
         </div>
         <div className="video-shell">
-          <video controls playsInline preload="metadata" poster="/images/client-review-poster.jpg" aria-label="Видеоотзыв клиента о работе с Евгенией Даныевой">
-            <source src="/client-review.mp4" type="video/mp4" />
+          <video controls playsInline preload="metadata" poster={`${basePath}/images/client-review-poster.jpg`} aria-label="Видеоотзыв клиента о работе с Евгенией Даныевой">
+            <source src={`${basePath}/client-review.mp4`} type="video/mp4" />
             Ваш браузер не поддерживает воспроизведение видео.
           </video>
           <div className="video-label"><span>отзыв клиента</span><strong>00:59</strong></div>
